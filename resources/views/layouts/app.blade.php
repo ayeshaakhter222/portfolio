@@ -34,8 +34,13 @@
     <div class="clearfix"></div>
 
     <main class="">
-        @yield('content')
+        <div class="home_banner_area">
+            @yield('content')
+        </div>
     </main>
+
+    <div class="clearfix"></div>
+
     @includeIf('inc.footer')
 
     <!-- Scripts -->
