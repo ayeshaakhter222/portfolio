@@ -25,8 +25,7 @@
                             <td>{{ $post->title }}</td>
                             <td>{{$post->slug  }}</td>
                             <td>{{$post->description}}</td>
-                            <td>{{$post->total_views  }}</td>
-                            <td>{{$post->total_comments }}</td>
+                            
                             
                             <td>
                             <a href="{{ route('post.show',$post->id) }}" class="btn btn-primary">Show</a>
