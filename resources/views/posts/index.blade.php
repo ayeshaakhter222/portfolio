@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12">
-            <a href="{{ route('post.create') }}" class="btn btn-primary mb-2">Create Post</a> 
+            <a href="{{ route('post.create') }}" class="btn btn-primary mb-2">Create Post</a>
             <br>
             <table class="table table-bordered">
                 <thead>
@@ -13,8 +13,6 @@
                         <th>Title</th>
                         <th>Slug</th>
                         <th>Description</th>
-                        <th>Total views</th>
-                        <th>Total comments</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -25,8 +23,8 @@
                             <td>{{ $post->title }}</td>
                             <td>{{$post->slug  }}</td>
                             <td>{{$post->description}}</td>
-                            
-                            
+
+
                             <td>
                                 <a href="{{ route('post.show',$post->id) }}" class="btn btn-primary">Show</a>
                                 <a href="{{ route('post.edit',$post->id) }}" class="btn btn-primary">Edit</a>

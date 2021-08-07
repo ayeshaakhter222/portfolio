@@ -13,35 +13,36 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    
-                    <form action="/post" method="post">
+
+                    <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <div class="form-group">
-                            <label for="">Post Title</label>
-                            <input type="text" name="title" class="form-control">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="">Post Title</label>
+                                    <input type="text" name="title" id="title" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="">Description</label>
+                                    <textarea type="text" name="description" id="description" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <input type="file" name="files[]" multiple class="custom-file-input" id="inputGroupFile02">
+                                        <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="">Post slug</label>
-                            <input type="text" name="slug" class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="">Description</label>
-                            <input type="text" name="description" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Total_views</label>
-                            <input type="text" name="total_views" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Total_comments</label>
-                            <input type="text" name="total_comments" class="form-control">
-                        </div>
-                        
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
-                    
+
                 </div>
             </div>
         </div>

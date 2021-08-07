@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
+use Ramsey\Uuid\Uuid;
 
 class PostController extends Controller
 {
@@ -20,20 +22,21 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $inputs = $request->all();
+
+        /*$request->validate([
             'title' => 'required',
             'slug' => 'required',
             'description' => 'required',
-          
-            ]);
-        $post = new Post();
-        $post->title = $request->title;
-        $post->slug = $request->slug;
-        $post->description = $request->description;
-        
+        ]);*/
 
-        $post->save();
-        return redirect('/home')->with('success','Post created successfully!');
+        $inputs['slug'] = Uuid::uuid1()->toString();
+        $inputs['user_id'] = Auth::id();
+
+//        dd($inputs);
+
+        $store = Post::create($inputs);
+        return redirect()->route('post.index')->with('success','Post created successfully!');
     }
 
     public function show(Post $post)
@@ -52,13 +55,13 @@ class PostController extends Controller
             'title' => 'required',
             'slug' => 'required',
             'description' => 'required',
-            
+
             ]);
         $post = new Post();
         $post->title = $request->title;
         $post->slug = $request->slug;
         $post->description = $request->description;
-       
+
 
         $post->save();
         return redirect('/home')->with('success','Post updated successfully!');
