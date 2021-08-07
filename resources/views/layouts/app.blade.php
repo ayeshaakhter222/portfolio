@@ -25,8 +25,8 @@
     <link rel="stylesheet" href="{{ asset('vendors/popup/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/flaticon/flaticon.css') }}">
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
 </head>
 <body>
     @includeIf('inc.nav')
@@ -34,9 +34,7 @@
     <div class="clearfix"></div>
 
     <main class="">
-        <div class="home_banner_area">
-            @yield('content')
-        </div>
+        @yield('content')
     </main>
 
     <div class="clearfix"></div>

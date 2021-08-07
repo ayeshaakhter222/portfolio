@@ -15,15 +15,14 @@ class Posts extends Migration
     {Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('title')->nullable();
-            $table->string('slug')->nullable();
+            $table->string('title');
+            $table->string('slug');
              $table->longText('description')->nullable();
-            $table->integer('total_views')->nullable();
-            $table->integer('total_comments')->nullable();
-            
+            $table->integer('total_views')->default(0)->nullable();
+            $table->integer('total_comments')->default(0)->nullable();
             $table->timestamps();
         });
-        
+
     }
 
     /**
