@@ -24,14 +24,13 @@
                             <td>{{$post->slug  }}</td>
                             <td>{{$post->description}}</td>
 
-
                             <td>
                                 <a href="{{ route('post.show',$post->id) }}" class="btn btn-primary">Show</a>
                                 <a href="{{ route('post.edit',$post->id) }}" class="btn btn-primary">Edit</a>
                                 <form action="{{ route('post.destroy',$post->id) }}" method="post" class="d-inline">
                                     {{ csrf_field() }}
                                     @method('DELETE')
-                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                    <button class="btn btn-danger btn-sm" type="submit">Delete</button>
                                 </form>
                             </td>
                         </tr>
