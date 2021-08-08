@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attachment;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Ramsey\Uuid\Uuid;
 
 class PostController extends Controller
@@ -12,7 +15,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('posts.index', compact('posts'));
+        $categories = Category::all()->take(3);
+        return view('posts.index', compact('posts','categories'));
     }
 
     public function create()
@@ -24,18 +28,32 @@ class PostController extends Controller
     {
         $inputs = $request->all();
 
-        /*$request->validate([
-            'title' => 'required',
-            'slug' => 'required',
-            'description' => 'required',
-        ]);*/
-
         $inputs['slug'] = Uuid::uuid1()->toString();
         $inputs['user_id'] = Auth::id();
 
-//        dd($inputs);
+        $post = Post::create($inputs);
 
-        $store = Post::create($inputs);
+        $files = $request->file('files');
+
+        foreach ($files as $file) {
+            $path = Storage::putFile('posts', $file);
+            $actualName = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+            $size = $file->getSize();
+            $name = basename($path);
+
+            $attachment = new Attachment([
+                'path' => $path,
+                'extension' => $extension,
+                'size' => $size,
+                'name' => $name,
+                'actual_name' => $actualName,
+                'user_id' => Auth::id(),
+            ]);
+
+            $post->attachments()->save($attachment);
+        }
+
         return redirect()->route('post.index')->with('success','Post created successfully!');
     }
 

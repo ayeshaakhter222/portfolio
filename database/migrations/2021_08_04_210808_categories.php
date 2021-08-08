@@ -17,6 +17,7 @@ class Categories extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
+            $table->text('description')->nullable();
             $table->bigInteger('parent_id')->nullable();
 
             $table->timestamps();

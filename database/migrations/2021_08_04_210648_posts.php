@@ -18,12 +18,11 @@ class Posts extends Migration
             $table->string('title');
             $table->string('slug');
              $table->longText('description')->nullable();
-            $table->integer('total_views')->nullable();
-            $table->integer('total_comments')->nullable();
-            
+            $table->integer('total_views')->default(0)->nullable();
+            $table->integer('total_comments')->default(0)->nullable();
             $table->timestamps();
         });
-        
+
     }
 
     /**
