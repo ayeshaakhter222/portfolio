@@ -10,7 +10,7 @@ class Attachment extends Model
     use HasFactory;
     protected $fillable = [
         'attachmentable',
-        'Is_featured',
+        'is_featured',
         'path',
         'extension',
         'size',

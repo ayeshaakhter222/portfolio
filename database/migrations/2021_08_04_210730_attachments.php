@@ -17,12 +17,12 @@ class Attachments extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->morphs('attachmentable');
-            $table->boolean('Is_featured')->nullable();
-            $table->string('path')->nullable();
-            $table->string('extension')->nullable();
-            $table->double('size')->nullable();
-            $table->string('name')->nullable();
-            $table->string('actual_name')->nullable();
+            $table->boolean('is_featured');
+            $table->string('path');
+            $table->string('extension');
+            $table->double('size');
+            $table->string('name');
+            $table->string('actual_name');
             
             $table->timestamps();
         });
