@@ -42,6 +42,16 @@
                                         <textarea type="text" name="description" id="description" class="form-control"></textarea>
                                     </div>
                                 </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        @foreach($categories as $category)
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" name="categories[]" type="checkbox" id="category-{{ $category->id }}" value="{{ $category->id }}">
+                                                <label class="form-check-label" for="category-{{ $category->id }}">{{ $category->name }}</label>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="custom-file">

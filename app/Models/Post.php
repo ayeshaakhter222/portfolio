@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Attachment;
+use App\Models\Category;
 
 /**
  * @method static create(array $inputs)
@@ -33,5 +34,13 @@ class Post extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * The roles that belong to the user.
+     */
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
     }
 }

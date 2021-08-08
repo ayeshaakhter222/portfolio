@@ -14,14 +14,19 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::with([
+            'categories'
+        ])
+            ->get();
+
         $categories = Category::all()->take(3);
         return view('posts.index', compact('posts','categories'));
     }
 
     public function create()
     {
-        return view('posts.create');
+        $categories = Category::all();
+        return view('posts.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -30,6 +35,8 @@ class PostController extends Controller
 
         $inputs['slug'] = Uuid::uuid1()->toString();
         $inputs['user_id'] = Auth::id();
+
+        // dd($inputs['categories']);
 
         $post = Post::create($inputs);
 
@@ -53,6 +60,8 @@ class PostController extends Controller
 
             $post->attachments()->save($attachment);
         }
+
+        $post->categories()->attach($inputs['categories']);
 
         return redirect()->route('post.index')->with('success','Post created successfully!');
     }
