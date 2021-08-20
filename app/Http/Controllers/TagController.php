@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Auth;
 use Ramsey\Uuid\Uuid;
 
 class TagController extends Controller
@@ -11,7 +12,8 @@ class TagController extends Controller
 
     public function index()
     {
-        $tags = Tag::all()->paginate(5);
+         $tags = Tag::all()->paginate(5);
+       
 
         return view('tags.index', compact('tags'));
     }

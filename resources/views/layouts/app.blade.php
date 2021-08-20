@@ -1,60 +1,48 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!--[if IE 8 ]><html class="no-js oldie ie8" lang="{{ str_replace('_', '-', app()->getLocale()) }}"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="{{ str_replace('_', '-', app()->getLocale()) }}"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="{{ str_replace('_', '-', app()->getLocale()) }}"><!--<![endif]-->
+
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <!-- <link rel="stylesheet" href="vendors/linericon/style.css"> -->
-    <!-- <link rel="stylesheet" href="css/font-awesome.min.css"> -->
-    <link rel="stylesheet" href="{{ asset('vendors/owl-carousel/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendors/lightbox/simpleLightbox.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendors/nice-select/css/nice-select.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendors/animate-css/animate.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendors/popup/magnific-popup.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendors/flaticon/flaticon.css') }}">
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+    <link rel="stylesheet" href="{{ asset('vendors/kards/css/base.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendors/kards/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendors/kards/css/vendor.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+
+    @yield('css')
+
+    <script src="{{ asset('vendors/kards/js/modernizr.js') }}"></script>
+    <script src="{{ asset('vendors/kards/js/pace.min.js') }}"></script>
 </head>
-<body>
-    @includeIf('inc.nav')
+<body id="top">
+    @includeIf('partials.nav')
 
-    <div class="clearfix"></div>
+    @yield('content')
 
-    <main class="">
-        @yield('content')
-    </main>
+    @includeIf('partials.footer')
 
-    <div class="clearfix"></div>
-
-    @includeIf('inc.footer')
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('vendors/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/stellar.js') }}"></script>
-    <script src="{{ asset('vendors/lightbox/simpleLightbox.min.js') }}"></script>
-    <script src="{{ asset('vendors/nice-select/js/jquery.nice-select.min.js') }}"></script>
-    <script src="{{ asset('vendors/isotope/imagesloaded.pkgd.min.js') }}"></script>
-    <script src="{{ asset('vendors/isotope/isotope.pkgd.min.js') }}"></script>
-    <script src="{{ asset('vendors/owl-carousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('vendors/popup/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.ajaxchimp.min.js') }}"></script>
-    <script src="{{ asset('vendors/counter-up/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('vendors/counter-up/jquery.counterup.min.js') }}"></script>
-    <script src="{{ asset('js/mail-script.js') }}"></script>
-    <script src="{{ asset('js/theme.js') }}"></script>
+    <script src="{{ asset('vendors/kards/js/jquery-2.1.3.min.js') }}"></script>
+    <script src="{{ asset('vendors/kards/js/plugins.js') }}"></script>
+    <script src="{{ asset('vendors/kards/js/main.js') }}"></script>
+
+    @yield('script')
 </body>
 </html>

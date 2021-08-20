@@ -35,24 +35,4 @@ class HomeController extends Controller
     {
         return view('dashboard');
     }
-
-    /**
-     * Show the application about.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function about()
-    {
-        return view('about');
-    }
-
-    /**
-     * Show the application contact.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function contact()
-    {
-        return view('contact');
-    }
 }
