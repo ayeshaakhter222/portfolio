@@ -8,11 +8,11 @@
 
             <div class="col-twelve">
 
-                <h5>Hello, World.</h5> <h1> I 'm Juan Dela Cruz.</h1>
+                <h5>Hello,</h5>
+                <h1> I 'm Ayesha Shiddika.</h1>
 
                 <p class="intro-position">
-                    <span>Front-end Developer</span>
-                    <span>UI/UX Designer</span>
+                    <span>Full-stack Web Developer</span>
                 </p>
 
                 <a class="button stroke smoothscroll" href="#about" title="">More About Me</a>
