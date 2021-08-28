@@ -28,7 +28,7 @@
                         <a class="smoothscroll" href="#contact" title="">Contact</a>
                     </li>
                     <li>
-                        <a href="styles.html" title="">Style Demo</a>
+                        <a href="{{ route('dashboard') }}" title="">Dashboard</a>
                     </li>
                 </ul>
             </nav>
